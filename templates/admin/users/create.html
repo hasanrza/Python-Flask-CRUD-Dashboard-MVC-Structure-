@@ -1,0 +1,88 @@
+{% extends 'base_admin.html' %}
+{% block title %}Add User · Dashboard{% endblock %}
+{% block page_title %}Add User{% endblock %}
+{% block breadcrumb %}
+<li class="breadcrumb-item active">Add User</li>
+{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">User Fields</h5>
+      </div>
+      <div class="card-body">
+        <div class="alert alert-danger" role="alert">
+          <i class="bi bi-exclamation-triangle me-2"></i>
+          <strong>Note:</strong> Fields marked as (*) are required fields.
+        </div>
+        
+        <form method="post" enctype="multipart/form-data" novalidate>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Name: *</label>
+                <input type="text" name="name" class="form-control" placeholder="Enter name" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Email: *</label>
+                <input type="email" name="email" class="form-control" placeholder="Enter email" required>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Password: *</label>
+                <input type="password" name="password" class="form-control" placeholder="Enter password" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Confirm Password: *</label>
+                <input type="password" name="confirm_password" class="form-control" placeholder="Confirm password" required>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Profile Image</label>
+            <input type="file" name="image" class="form-control" accept="image/*">
+            <div class="form-text">
+              <i class="bi bi-info-circle me-1"></i>Optional. Accepted formats: JPG, PNG, GIF. Max size: 5MB.
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Actions</h5>
+      </div>
+      <div class="card-body">
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary btn-sm" type="submit" form="userForm">
+            <i class="bi bi-check-circle me-2"></i>Save
+          </button>
+          <a class="btn btn-danger btn-sm" href="{{ url_for('admin_users') }}">
+            <i class="bi bi-x-circle me-2"></i>Cancel
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Add form ID to the form
+document.querySelector('form').id = 'userForm';
+</script>
+{% endblock %}
+
+
